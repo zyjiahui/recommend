@@ -76,3 +76,34 @@ target_user_mean_rating = np.mean(list(user_data[target_user].values()))  # 目�
 # 计算皮尔逊 公式
 target_user_pre = target_user_mean_rating + weighted_scores/corr_values_num
 print(f'用户{target_user}对物品{target_item}的预测评分为：{target_user_pre}')
+
+
+
+
+
+"""
+相似性计算：
+1、杰卡德相似性系数（Jaccard）：
+2、余弦相似性
+3、皮尔逊相关系数：
+
+
+UserCF协同过滤的公式求物品评分：
+
+
+基于用户的协同过滤算法的缺点：
+1、数据稀疏性：
+    一般大型的商务推荐系统中有非常多的物品，用户可能只买了1%的物品，不同用户之间购买的重叠率较低，很难找到用户相似的邻居，该方法不适用于类似酒店预定、大件物品购买等低频应用
+2、算法扩展性：
+    方法需要维护用户的相似性矩阵以快速的找出TopN个相似用户，矩阵存储开销较大，存储空间随着用户的增加而增加，不适用于用户量较大的应用
+
+由于其缺点，很多店商平台都不适用UserCF，而是用的ItemCF实现最初的推荐系统
+
+
+算法评估：
+召回率 Recall  预测准确的/用户喜欢的
+精确率 Precision 准确推荐的/总物品量
+覆盖率 Coverage 反映了推荐算法发觉长尾的能力，覆盖率越高，说明算法越能将长尾的物品推荐给用户  推荐的物品集合/物品总集合
+新颖度 推荐的物品都很热门，新颖度低
+
+"""
