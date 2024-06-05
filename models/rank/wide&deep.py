@@ -12,7 +12,9 @@ import torch.optim as optim
 class WideAndDeepModel(nn.Module):
     def __init__(self,wide_dim,deep_dim,hidden_dim):
         super(WideAndDeepModel,self).__init__()
+        # wide侧是线性层LR
         self.wide = nn.Linear(wide_dim,1)   # 这里输出维度是1，说明wide的线性层输出的是一个单一预测值
+        # deep是简单的全连接前馈神经网络
         self.deep = nn.Sequential(
             nn.Linear(deep_dim,hidden_dim),
             nn.ReLU(),
@@ -25,7 +27,7 @@ class WideAndDeepModel(nn.Module):
         output = torch.sigmoid(wide_out + deep_out)
         return output
 
-
+# 测试
 wide_dim = 10
 deep_dim = 20
 hidden_dim = 32
